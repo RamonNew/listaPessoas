@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <title>Aula Bootstrap</title>
+    
+  </head>
+  <body>
+    <header>
+       <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+            <div class="container">
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link">Cadastro Pessoas</a> </li>
+                        <li class="nav-item"><a class="nav-link active">Lista Pessoas</a> </li>
+                    </ul>
+                </div>
+            </div>
+       </nav> 
+    </header>
+    
+    <div class="conteudo">
+        <div class="container">
+            <h1>Lista de Pessoas</h1>
+            <table class="table table-light table-striped" id="pessoas">
+                <tr>
+                    <th>Nome</th>
+                    <th>Sobrenome</th>
+                    <th>Editar</th>
+                    <th>Excluir</th>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalExcluir" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Deseja realmente excluir o usuário</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        Atenção essa ação não poderá ser desfeita!!!
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" onClick="excluir()">Sim</button>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        var pessoas = [["Ramon","Nascimento"],["Julianderson","Soares"],["Gladson","Simões"],["João", "Schrock"]];
+        //var excluir = "";
+        var html ="";
+        for (pessoa in pessoas){
+            html += "<tr>";
+            html += "<td>" + pessoas[pessoa][0] + "</td>";
+            html += "<td>" + pessoas[pessoa][1] + "</td>";
+            html += '<td><button class="btn btn-warning" onclick="editar()">Editar</button></td>';
+            html += '<td><button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalExcluir" onclick=>Excluir</button></td>'
+            html += "</tr>"
+        }
+
+        document.getElementById("pessoas").innerHTML += html;
+   
+        function editar(){
+            alert("Estou Editando");    
+        }
+        function excluir() {
+            alert("Estou excluindo");
+            location.reload();
+        }        
+    </script>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>
